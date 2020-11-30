@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import Footer from "./components/Footer/index"
+import Wrapper from "./components/Wrapper/index"
+import Nav from "./components/Nav/index"
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
+  document.title = "Google Book Search"
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Nav />
+        <Wrapper>
+          <Route exact path="/" component={Search} />
+          <Route exact path="/search" component={Search} />
+          <Route exact path="/saved" component={Saved} />
+        </Wrapper>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
